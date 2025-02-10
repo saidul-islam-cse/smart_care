@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-z-s%f@ob((5m=g^025d=aqb$jur-00vtqe-q92(*n8qzc&!60#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['https://smart-care-62fj.onrender.com']
 
 
 # Application definition

@@ -37,7 +37,7 @@ class UserRegistrationView(APIView):
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             print("uid: ", uid)
 
-            confirm_link = f"http://127.0.0.1:8000/patient/active/{uid}/{token}"
+            confirm_link = f"https://smart-care-62fj.onrender.com/patient/active/{uid}/{token}"
             email_subject = "Confirmation Email for Activate Account"
             email_body = render_to_string('confirm_email.html', {'confirm_link':confirm_link})
             
@@ -59,7 +59,7 @@ def activeted(request, uid64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        return redirect('register')
+        return redirect('login')
     else:
         return redirect('register')
     
