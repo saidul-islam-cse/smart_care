@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-z-s%f@ob((5m=g^025d=aqb$jur-00vtqe-q92(*n8qzc&!60#
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://smart-care-62fj.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://smart-care-62fj.onrender.com', 'http://127.0.0.1:8000/', "http://127.0.0.1:5501"]
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    "corsheaders",
     'django_filters',
     'appointment',
     'contact_us',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,6 +60,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+   "http://127.0.0.1:5501"
 ]
 
 ROOT_URLCONF = 'smart_care.urls'
